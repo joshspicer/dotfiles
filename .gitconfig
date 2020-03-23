@@ -1,0 +1,5 @@
+[user]
+	name = joshspicer
+	email = hello@joshspicer.com
+[alias]
+	pushall = !git remote | xargs -L1 git push --all
