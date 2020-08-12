@@ -17,6 +17,10 @@ yankcommit() {
    git rebase -p --onto $1^ $1
 }
 
+pbcat() {
+    cat $1 | pbcopy
+}
+
 alias gs="git status"
 alias gd="git diff"
 alias difffiles="git diff master HEAD  --compact-summary"
