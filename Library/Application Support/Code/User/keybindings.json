@@ -1,78 +1,84 @@
-// Place your key bindings in this file to overwrite the defaults
 [
-  {
-    "key": "cmd+[",
-    "command": "-editor.action.outdentLines",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "alt+f",
-    "command": "editor.action.formatDocument",
-    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "shift+alt+f",
-    "command": "-editor.action.formatDocument",
-    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "alt+down",
-    "command": "-editor.action.smartSelect.shrink",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+up",
-    "command": "-editor.action.smartSelect.grow",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "cmd+=",
-    "command": "-editor.unfold",
-    "when": "editorFocus"
-  },
-  {
-    "key": "cmd+-",
-    "command": "-editor.fold",
-    "when": "editorFocus"
-  },
-  {
-    "key": "shift+alt+down",
-    "command": "-editor.action.copyLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "shift+alt+up",
-    "command": "-editor.action.copyLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "shift+alt+up",
-    "command": "-editor.action.moveLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "shift+alt+down",
-    "command": "-editor.action.moveLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "shift+alt+down",
-    "command": "editor.action.insertCursorBelow",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+cmd+down",
-    "command": "-editor.action.insertCursorBelow",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "shift+alt+up",
-    "command": "editor.action.insertCursorAbove",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+cmd+up",
-    "command": "-editor.action.insertCursorAbove",
-    "when": "editorTextFocus"
-  }
+    {
+      "key": "cmd+[",
+      "command": "-editor.action.outdentLines",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "alt+f",
+      "command": "editor.action.formatDocument",
+      "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "shift+alt+f",
+      "command": "-editor.action.formatDocument",
+      "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "alt+down",
+      "command": "-editor.action.smartSelect.shrink",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+up",
+      "command": "-editor.action.smartSelect.grow",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "cmd+=",
+      "command": "-editor.unfold",
+      "when": "editorFocus"
+    },
+    {
+      "key": "cmd+-",
+      "command": "-editor.fold",
+      "when": "editorFocus"
+    },
+    {
+      "key": "shift+alt+down",
+      "command": "-editor.action.copyLinesDownAction",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "shift+alt+up",
+      "command": "-editor.action.copyLinesUpAction",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "shift+alt+up",
+      "command": "-editor.action.moveLinesUpAction",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "shift+alt+down",
+      "command": "-editor.action.moveLinesDownAction",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "shift+alt+down",
+      "command": "editor.action.insertCursorBelow",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+cmd+down",
+      "command": "-editor.action.insertCursorBelow",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+alt+up",
+      "command": "editor.action.insertCursorAbove",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+cmd+up",
+      "command": "-editor.action.insertCursorAbove",
+      "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+a",
+        "command": "-workbench.view.extension.azure"
+    }
 ]
+
+// ====== My favorite built-in commands ======
+// * Cmd + B --- toggle sidebar
