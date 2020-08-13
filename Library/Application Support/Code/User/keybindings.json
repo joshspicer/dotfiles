@@ -5,6 +5,11 @@
       "when": "editorTextFocus && !editorReadonly"
     },
     {
+      "key": "cmd+]",
+      "command": "-editor.action.indentLines",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
       "key": "alt+f",
       "command": "editor.action.formatDocument",
       "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
@@ -77,6 +82,22 @@
     {
         "key": "shift+cmd+a",
         "command": "-workbench.view.extension.azure"
+    },
+    {
+      "key": "cmd+[",
+      "command": "workbench.action.navigateBack"
+    },
+    {
+      "key": "ctrl+-",
+      "command": "-workbench.action.navigateBack"
+    },
+    {
+      "key": "cmd+]",
+      "command": "workbench.action.navigateForward"
+    },
+    {
+      "key": "ctrl+shift+-",
+      "command": "-workbench.action.navigateForward"
     }
 ]
 
