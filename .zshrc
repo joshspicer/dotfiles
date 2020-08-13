@@ -27,6 +27,7 @@ alias difffiles="git diff master HEAD  --compact-summary"
 alias gpb='git push origin $(git branch --show-current)'
 alias githash="git rev-parse --short HEAD"
 alias plz='sudo $(fc -ln -1)'
+alias gpullb='git pull origin $(git branch --show-current)' 
 
 export PATH="/Users/josh/Library/Android/sdk/platform-tools:/Users/josh/Documents/flutter/bin:/usr/local/opt/ruby/bin:$PATH"
 export THEOS=~/theos
