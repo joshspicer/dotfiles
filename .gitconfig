@@ -1,5 +1,8 @@
 [user]
 	name = joshspicer
-	email = hello@joshspicer.com
+    email = hello@joshspicer.com
+    signingkey = 22D84A62
 [alias]
-	pushall = !git remote | xargs -L1 git push --all
+    pushall = !git remote | xargs -L1 git push --all
+[commit]
+    gpgsign = true
