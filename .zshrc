@@ -24,7 +24,7 @@ alias gpullb='git pull origin $(git branch --show-current)'
 alias gitscrub='git clean -xdf'
 alias git-repair-gitignore='git rm --cached `git ls-files -i --exclude-from=.gitignore`'
 
-export PATH=$PATH:/Users/joshspicer/Library/Python/2.7/bin
+export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
 # Docker
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
@@ -46,7 +46,7 @@ function dockershellshhere() {
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/joshspicer/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
