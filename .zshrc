@@ -5,12 +5,20 @@ addcs() {
    git add "*.cs"
 }
 
+addExt() {
+   git add "*.$1"
+}
+
 yankcommit() {
    git rebase -p --onto $1^ $1
 }
 
 pbcat() {
     cat $1 | pbcopy
+}
+
+removeCR() {
+        sed -i -e 's/\r$//' $1
 }
 
 alias cls="clear"
