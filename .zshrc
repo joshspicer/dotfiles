@@ -17,8 +17,19 @@ pbcat() {
     cat $1 | pbcopy
 }
 
+# Removes ^M windows carriage return character from a given file
 removeCR() {
         sed -i -e 's/\r$//' $1
+}
+
+# Scans for bluetooth low energy from the given MAC address:
+gattMAC() {
+    ssh ubuntu01 gatttool -b $1  --characteristics
+}
+
+# Analyze traffic on network
+mitm() {
+    ssh router tcpdump -i eth0 -U -s0 -w - 'not port 22' | wireshark -k -i -
 }
 
 alias cls="clear"
