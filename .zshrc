@@ -28,8 +28,12 @@ gattMAC() {
 }
 
 # Analyze traffic on network
-mitm() {
+mitm_router() {
     ssh router tcpdump -i eth0 -U -s0 -w - 'not port 22' | wireshark -k -i -
+}
+
+mitm_proxy() {
+   docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 8080:8080 mitmproxy/mitmproxy
 }
 
 alias cls="clear"
@@ -42,8 +46,6 @@ alias plz='sudo $(fc -ln -1)'
 alias gpullb='git pull origin $(git branch --show-current)' 
 alias gitscrub='git clean -xdf'
 alias git-repair-gitignore='git rm --cached `git ls-files -i --exclude-from=.gitignore`'
-
-export PATH=$PATH:/Users/joshspicer/Library/Python/2.7/bin
 
 # Docker
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
@@ -58,14 +60,13 @@ function dockershellshhere() {
     docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
 }
 
-
 ## Oh my Zsh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/joshspicer/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
