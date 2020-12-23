@@ -1,9 +1,9 @@
 
-if [ -d "~/dotfiles" ]; then
+if [ -d ~/dotfiles ]; then
   source ~/dotfiles/.zshrc
 fi
 
-if [ -d "~/.dotfiles" ]; then
+if [ -d ~/.dotfiles ]; then
   source ~/.dotfiles/.zshrc
 fi
 
