@@ -1,5 +1,5 @@
 
-export PS1="%m: %B%~%b $ "
+#export PS1="%m: %B%~%b $ "
 
 addcs() {
    git add "*.cs"
@@ -19,7 +19,7 @@ pbcat() {
 
 # Removes ^M windows carriage return character from a given file
 removeCR() {
-        sed -i -e 's/\r$//' $1
+    sed -i -e 's/\r$//' $1
 }
 
 # Scans for bluetooth low energy from the given MAC address:
