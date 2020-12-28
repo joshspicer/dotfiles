@@ -46,6 +46,7 @@ alias plz='sudo $(fc -ln -1)'
 alias gpullb='git pull origin $(git branch --show-current)' 
 alias gitscrub='git clean -xdf'
 alias git-repair-gitignore='git rm --cached `git ls-files -i --exclude-from=.gitignore`'
+alias diff-open="git diff --name-only | xargs $EDITOR"
 
 # Docker
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
