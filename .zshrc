@@ -32,8 +32,16 @@ mitm_router() {
     ssh router tcpdump -i eth0 -U -s0 -w - 'not port 22' | wireshark -k -i -
 }
 
-mitm_proxy() {
-   docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 8080:8080 mitmproxy/mitmproxy
+mitm_proxy_enable() {
+    networksetup -setwebproxy wi-fi localhost 8080
+    networksetup -setwebproxystate wi-fi on
+    networksetup -setsecurewebproxy wi-fi localhost 8080
+    networksetup -setsecurewebproxystate wi-fi on
+    mitmproxy
+}
+mitm_proxy_disable() {
+    networksetup -setwebproxystate wi-fi off
+    networksetup -setsecurewebproxystate wi-fi off
 }
 
 alias utc="date -u"
