@@ -73,6 +73,11 @@ alias gitscrub='git clean -xdf'
 alias git-repair-gitignore='git rm --cached `git ls-files -i --exclude-from=.gitignore`'
 alias diff-open="git diff --name-only | xargs $EDITOR"
 
+# Search git history for the removal of a given string ($1)
+function pickaxe() {
+	git log -S $1
+}
+
 # Docker
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
 alias dockershellsh="docker run --rm -i -t --entrypoint=/bin/sh"
