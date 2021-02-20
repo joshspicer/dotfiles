@@ -1,3 +1,3 @@
 # Source shared alias
-. .funcs
-. .alias
+. ~/.funcs
+. ~/.alias
