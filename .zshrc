@@ -1,73 +1,8 @@
-
-#export PS1="%m: %B%~%b $ "
-
-addcs() {
-   git add "*.cs"
-}
-
-addExt() {
-   git add "*.$1"
-}
-
-yankcommit() {
-   git rebase -p --onto $1^ $1
-}
-
-pbcat() {
-    cat $1 | pbcopy
-}
-
-# Removes ^M windows carriage return character from a given file
-removeCR() {
-    sed -i -e 's/\r$//' $1
-}
-
-# Scans for bluetooth low energy from the given MAC address:
-gattMAC() {
-    ssh ubuntu01 gatttool -b $1  --characteristics
-}
-
-# Analyze traffic on network
-mitm_router() {
-    ssh router tcpdump -i eth0 -U -s0 -w - 'not port 22' | wireshark -k -i -
-}
-
-mitm_proxy() {
-   docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 8080:8080 mitmproxy/mitmproxy
-}
-
-alias utc="date -u"
-alias cls="clear"
-alias gs="git status"
-alias gd="git diff"
-alias difffiles="git diff master HEAD  --compact-summary"
-alias gpb='git push origin $(git branch --show-current)'
-alias githash="git rev-parse --short HEAD"
-alias plz='sudo $(fc -ln -1)'
-alias gpullb='git pull origin $(git branch --show-current)' 
-alias gitscrub='git clean -xdf'
-alias git-repair-gitignore='git rm --cached `git ls-files -i --exclude-from=.gitignore`'
-alias diff-open="git diff --name-only | xargs $EDITOR"
-
-# Docker
-alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
-alias dockershellsh="docker run --rm -i -t --entrypoint=/bin/sh"
-
-function dockershellhere() {
-    dirname=${PWD##*/}
-    docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
-}
-function dockershellshhere() {
-    dirname=${PWD##*/}
-    docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
-}
-
-## Oh my Zsh
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export ZSH="$HOME/.oh-my-zsh"
+
+# Source shared alias
+. .funcs
+. .alias
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
