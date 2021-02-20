@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a arr=(".alias" ".funcs" ".bashrc" ".zshrc" ".vimrc" ".gitconfig")
+declare -a arr=(".common" ".bashrc" ".zshrc" ".vimrc" ".gitconfig")
 
 for i in "${arr[@]}"
 do
