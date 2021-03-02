@@ -41,6 +41,25 @@ mitm_proxy_disable() {
     networksetup -setsecurewebproxystate wi-fi off
 }
 
+
+function revshell() {
+    cd ~/dev/vsclk-core/tools/Powershell/
+    pwsh
+    #Import-Module ./codespaces-db/ &&  .\start-reverse-shell.ps1 -codespaceName $1 -controlPlane $2
+}
+
+function socat-sendfile() {
+    # $1 = file_path
+    # $2 = remote_server_with_port
+    socat -u FILE:$1 TCP:$2
+}
+
+function socat-recvfile() {
+    # $1 = port_to_listen_on
+    # $2 = output_file_name
+    socat -u TCP-LISTEN:$1,reuseaddr OPEN:$2,creat
+}
+
 function socat-listen() {
 	if [ "$#" -ne 1 ]; then
            echo "[-] Usage: ./socat-listen.sh <10000:10050>"
