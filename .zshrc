@@ -11,11 +11,19 @@ export ZSH="$HOME/.oh-my-zsh"
 # Source shared alias
 . ~/.common
 
+# Link my custom zsh theme first time dotfiles run
+THEME_DIR="$ZSH/custom/themes/"
+THEME_NAME="josh"
+THEME_FILE="$THEME_NAME.zsh-theme"
+if  [ -d $ZSH ] && [ ! -f $THEME_DIR/$THEME_FILE ];then
+    ln -sf ~/.dotfiles/$THEME_FILE $THEME_DIR/$THEME_FILE
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="$THEME_NAME"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
