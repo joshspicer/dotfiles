@@ -94,6 +94,10 @@ function pickaxe() {
 	git log -S $1
 }
 
+function brew-installed() {
+	 brew leaves | xargs -n1 brew desc
+}
+
 alias utc="date -u"
 alias cls="clear"
 alias gs="git status"
