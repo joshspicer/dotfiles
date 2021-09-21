@@ -113,3 +113,4 @@ alias ducks='du -cks * | sort -rn | head -n 10'
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
 alias dockershellsh="docker run --rm -i -t --entrypoint=/bin/sh"
 
+alias rm-imgs="docker rmi -f $(docker images -a -q)"
