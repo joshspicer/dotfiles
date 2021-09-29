@@ -1,0 +1,57 @@
+Amphetamine.app
+Bartender 4.app
+Bear.app
+Boop.app
+ColorSlurp.app
+Company Portal.app
+CopyClip.app
+Discord.app
+DisplayLink Manager.app
+DisplayLink Software Uninstaller.app
+Docker.app
+GarageBand.app
+GlobalProtect.app
+Hex Fiend.app
+ISO8601.app
+Itsycal.app
+Keynote.app
+Logi Bolt.app
+Logi Options.app
+Magnet.app
+Microsoft Azure Storage Explorer.app
+Microsoft Defender ATP.app
+Microsoft Edge.app
+Microsoft Excel.app
+Microsoft OneNote.app
+Microsoft Outlook.app
+Microsoft PowerPoint.app
+Microsoft Remote Desktop.app
+Microsoft Teams.app
+Microsoft Word.app
+Minecraft.app
+Monodraw.app
+Notability.app
+Numbers.app
+OneDrive.app
+Pages.app
+Pasta.app
+Postman.app
+PowerShell.app
+Proxyman.app
+Rider.app
+Rocket.app
+Safari.app
+Slack.app
+SpotStatus.app
+Spotify.app
+Texpad.app
+Timery.app
+Utilities
+VLC.app
+Visual Studio Code - Insiders.app
+Visual Studio Code.app
+WireGuard.app
+Xcode.app
+iMovie.app
+iTerm.app
+zoom.us.app
