@@ -84,6 +84,12 @@ function dockershellhere() {
     dirname=${PWD##*/}
     docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
 }
+
+
+function mcr() {
+    dockershellhere mcr.microsoft.com/vscode/devcontainers/base:bionic
+}
+
 function dockershellshhere() {
     dirname=${PWD##*/}
     docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
