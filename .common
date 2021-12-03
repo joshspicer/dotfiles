@@ -104,6 +104,10 @@ function brew-installed() {
 	 brew leaves | xargs -n1 brew desc
 }
 
+json_escape () {
+    printf '%s' "$1" | python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'
+}
+
 alias utc="date -u"
 alias cls="clear"
 alias gs="git status"
@@ -118,6 +122,8 @@ alias git-repair-gitignore='git rm --cached `git ls-files -i --exclude-from=.git
 alias diff-open="git diff --name-only | xargs $EDITOR"
 alias changed="git log --name-only"
 alias ducks='du -cks * | sort -rn | head -n 10'
+
+alias cxc='gh cs ssh -c $(gh cs create -r vsls-contrib/vscs-in-codespaces -b main -m premiumLinux)'
 
 # Docker
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
