@@ -16,3 +16,10 @@ brew "github/packages/ghcs"
 cask "ngrok"
 cask "postman"
 cask "powershell"
+
+tap "finestructure/Hummingbird"
+cask "Hummingbird"
+
+## Mac App Store
+# HomeControl
+# ...
