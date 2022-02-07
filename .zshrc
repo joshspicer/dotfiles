@@ -85,7 +85,9 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git) # git-open
 
-source $ZSH/oh-my-zsh.sh
+if  [ -d "$ZSH" ] && [ -f "$ZSH/oh-my-zsh.sh" ]; then
+    source $ZSH/oh-my-zsh.sh
+fi
 
 # User configuration
 
