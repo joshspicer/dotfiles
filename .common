@@ -123,7 +123,8 @@ alias diff-open="git diff --name-only | xargs $EDITOR"
 alias changed="git log --name-only"
 alias ducks='du -cks * | sort -rn | head -n 10'
 
-alias cxc='gh cs ssh -c $(gh cs create -r vsls-contrib/vscs-in-codespaces -b main -m premiumLinux)'
+#alias cxc='gh cs ssh -c $(gh cs create -r vsls-contrib/vscs-in-codespaces -b main -m premiumLinux)'
+alias new-cxc="gh api -X POST repos/vsls-contrib/vscs-in-codespaces/codespaces -F 'vscs_target=ppe' -F 'location=WestUs2' -F 'machine=largePremiumLinux'"
 
 # Docker
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
