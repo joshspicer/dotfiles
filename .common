@@ -123,8 +123,26 @@ alias diff-open="git diff --name-only | xargs $EDITOR"
 alias changed="git log --name-only"
 alias ducks='du -cks * | sort -rn | head -n 10'
 
-#alias cxc='gh cs ssh -c $(gh cs create -r vsls-contrib/vscs-in-codespaces -b main -m premiumLinux)'
-alias new-cxc="gh api -X POST repos/vsls-contrib/vscs-in-codespaces/codespaces -F 'vscs_target=ppe' -F 'location=WestUs2' -F 'machine=largePremiumLinux'"
+alias clear-scrollback="clear && printf '\e[3J'"
+
+# Codespaces
+function new-cs () {
+   NAME=$(gh api -X POST repos/$1/codespaces -F 'location=WestUs2' -F 'vscs_target=ppe' | jq -r .name)
+   echo $NAME
+   gh cs ssh -c $NAME
+}
+
+function new-cs-cxc () {
+   NAME=$(gh api -X POST repos/joshspicer/almost-empty/codespaces -F 'location=WestUs2' -F 'vscs_target=ppe' -F 'machine=largePremiumLinux' | jq -r .name)
+   echo $NAME
+   gh cs ssh -c $NAME
+}
+
+function new-cs-dev-test () {
+   NAME=$(gh api -X POST repos/joshspicer/almost-empty/codespaces -F 'location=WestUs2' -F 'vscs_target=development' | jq -r .name)
+   echo $NAME
+   gh cs ssh -c $NAME
+}
 
 # Docker
 alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
