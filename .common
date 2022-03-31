@@ -133,7 +133,7 @@ function new-cs () {
 }
 
 function new-cs-cxc () {
-   NAME=$(gh api -X POST repos/vsls-contrib/vscs-in-codespaces/codespaces -F 'location=WestUs2' -F 'vscs_target=ppe' -F 'machine=largePremiumLinux' | jq -r .name)
+   NAME=$(gh api -X POST repos/github/codespaces-service/codespaces -F 'location=WestUs2' -F 'vscs_target=ppe' -F 'machine=largePremiumLinux' | jq -r .name)
    echo $NAME
    gh cs ssh -c $NAME
 }
