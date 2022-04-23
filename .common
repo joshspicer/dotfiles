@@ -1,3 +1,5 @@
+alias dot='cd ~/.dotfiles'
+
 addcs() {
    git add "*.cs"
 }
@@ -133,3 +135,6 @@ alias rm-imgs='docker rmi -f $(docker images -a -q)'
 
 alias cdnewest='cd $(ls -1tr | tail -n 1)'
 alias h='cdnewest'
+
+alias crnb='cd ~/Documents/masters_s22/cryptology/crypto-notesbooks'
+alias crrp='cd ~/Documents/masters_s22/cryptology/airtags-crypto-paper'
