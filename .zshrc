@@ -9,7 +9,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Source shared alias
-. ~/.common
+. ~/.bash_aliases
 
 # Link my custom zsh theme first time dotfiles run
 THEME_DIR="$ZSH/custom/themes/"
