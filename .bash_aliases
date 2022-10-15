@@ -272,5 +272,3 @@ alias rm-docker-nuclear="rm-containers-force || : && rm-imgs || :  && docker sys
 alias cdnewest='cd $(ls -1tr | tail -n 1)'
 alias h='cdnewest'
 
-alias crnb='cd ~/Documents/masters_s22/cryptology/crypto-notesbooks'
-alias crrp='cd ~/Documents/masters_s22/cryptology/airtags-crypto-paper'
