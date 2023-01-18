@@ -1,5 +1,7 @@
 alias dot='cd ~/.dotfiles'
 
+git config pull.rebase false
+
 transfer() {
     local file
     declare -a file_array
