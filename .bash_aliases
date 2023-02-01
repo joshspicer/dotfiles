@@ -1,4 +1,5 @@
-alias dot='cd ~/.dotfiles'
+alias dot-local='cd ~/.dotfiles'
+alias dot-codespace='cd /workspaces/.codespaces/.persistedshare/dotfiles'
 
 git config pull.rebase false
 
@@ -240,6 +241,7 @@ alias git-repair-gitignore='git rm --cached `git ls-files -i --exclude-from=.git
 alias diff-open="git diff --name-only | xargs $EDITOR"
 alias changed="git log --name-only"
 alias ducks='du -cks * | sort -rn | head -n 10'
+alias epoch='date +%s%3N'
 
 alias clear-scrollback="clear && printf '\e[3J'"
 
