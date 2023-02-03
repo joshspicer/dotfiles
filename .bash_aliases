@@ -1,6 +1,8 @@
 alias dot='cd ~/.dotfiles'
 
-git config pull.rebase false
+if [ -d .git ]; then
+    git config pull.rebase false
+fi
 
 transfer() {
     local file
@@ -226,6 +228,10 @@ json_escape () {
     printf '%s' "$1" | python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'
 }
 
+json_unescape() {
+    echo "$1" | jq '. | fromjson'
+}
+
 alias utc="date -u"
 alias cls="clear"
 alias gs="git status"
@@ -260,6 +266,12 @@ function new-cs-dev-test () {
    NAME=$(gh api -X POST repos/joshspicer/almost-empty/codespaces -F 'location=WestUs2' -F 'vscs_target=development' | jq -r .name)
    echo $NAME
    gh cs ssh -c $NAME
+}
+
+# Dev Containers 
+
+function inspect-dev-container-metadata-from-image() {
+  docker image inspect "$1" | jq '.[0].Config.Labels."devcontainer.metadata" | fromjson'
 }
 
 # Docker
