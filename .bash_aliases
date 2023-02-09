@@ -286,5 +286,5 @@ alias rm-containers-force='docker ps -q | xargs docker rm -f'
 alias rm-docker-nuclear="rm-containers-force || : && rm-imgs || :  && docker system prune || : && docker builder prune || :"
 
 alias cdnewest='cd $(ls -1tr | tail -n 1)'
-alias h='cdnewest'
+alias n='cdnewest'
 
