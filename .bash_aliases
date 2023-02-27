@@ -168,11 +168,6 @@ mitm_proxy_disable() {
     networksetup -setsecurewebproxystate wi-fi off
 }
 
-
-function revshell() {
-    cd ~/dev/vsclk-core/tools/Powershell/
-}
-
 function socat-sendfile() {
     # $1 = file_path
     # $2 = remote_server_with_port
@@ -206,9 +201,8 @@ function dockershellhere() {
     docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
 }
 
-
 function mcr() {
-    dockershellhere mcr.microsoft.com/vscode/devcontainers/base:bionic
+    dockershellhere mcr.microsoft.com/devcontainers/base
 }
 
 function dockershellshhere() {
@@ -231,6 +225,11 @@ json_escape () {
 
 json_unescape() {
     echo "$1" | jq '. | fromjson'
+}
+
+# Given a URL, follow redirects and print what the final URL is (don't actually fetch)
+follow_redirects() {
+	curl $1 -s -L -I -o /dev/null -w '%{url_effective}'
 }
 
 alias utc="date -u"
