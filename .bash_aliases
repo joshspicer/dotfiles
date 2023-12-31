@@ -287,10 +287,9 @@ alias rm-docker-nuclear="rm-containers-force || : && rm-imgs || :  && docker sys
 alias cdnewest='cd $(ls -1tr | tail -n 1)'
 alias n='cdnewest'
 
-# GitHub Next
-
-if command -v github-copilot-cli &> /dev/null; then
-   eval "$(github-copilot-cli alias -- "$0")"
-fi
-
-
+alias yt-dl='docker run \
+                  --rm -i \
+                  -e PGID=$(id -g) \
+                  -e PUID=$(id -u) \
+                  -v "$(pwd)":/workdir:rw \
+                  mikenye/youtube-dl'
