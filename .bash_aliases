@@ -293,3 +293,16 @@ alias yt-dl='docker run \
                   -e PUID=$(id -u) \
                   -v "$(pwd)":/workdir:rw \
                   mikenye/youtube-dl'
+
+
+function grck() {
+  # Get a random short word (<= 5 characters) from the system dictionary using sort -R
+  local dict=$(grep -E '^[a-z]{1,5}$' /usr/share/dict/words | sort -R) 
+  local q=$(echo $dict | tail -n 1)
+  local p=$(echo $dict | head -n 1)
+  local branch_name="joshspicer/${q}-${p}"
+
+  #echo $branch_name
+  git checkout -b "$branch_name"
+}
+
