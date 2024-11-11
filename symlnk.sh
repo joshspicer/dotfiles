@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Run this script from its directory to symlink everything in arr to your ~ dir.
 # Named something cryptic so Codespaces does their default symlinking for me!
