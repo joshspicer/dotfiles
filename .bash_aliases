@@ -180,6 +180,8 @@ alias diff-open="git diff --name-only | xargs $EDITOR"
 alias changed="git log --name-only"
 alias ducks='du -cks * | sort -rn | head -n 10'
 alias epoch='date +%s%3N'
+alias ai='aichat'
+alias a='aichat'
 
 alias clear-scrollback="clear && printf '\e[3J'"
 
