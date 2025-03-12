@@ -11,6 +11,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # Source shared alias
 . ~/.bash_aliases
 
+export GPG_TTY=$(tty)
+
 # Link my custom zsh theme first time dotfiles run
 THEME_DIR="$ZSH/custom/themes/"
 THEME_NAME="josh"
@@ -121,3 +123,7 @@ fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=/opt/homebrew/bin:/Users/jospicer/.yarn/bin:/Users/jospicer/.config/yarn/global/node_modules/.bin:/Users/jospicer/.yarn/bin:/Users/jospicer/.config/yarn/global/node_modules/.bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Applications/iTerm.app/Contents/Resources/utilities
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

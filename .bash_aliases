@@ -43,7 +43,7 @@ transfer() {
 
 	if [ -d "$file" ];
 	then file_name="$file_name.zip",;
-	(cd "$file"&&zip -r -q - .)|curl  -u "$BASIC_USERNAME:$PASSWORD" --progress-bar --upload-file "-" "/$file_name"|tee /dev/null,;
+	(cd "$file"&&zip -r -q - .)|curl  -u "$BASIC_USERNAME:$PASSWORD" --progress-bar --upload-file "-" "https://$DOMAIN/$file_name"|tee /dev/null,;
 	else cat "$file"|curl -u "$BASIC_USERNAME:$PASSWORD" --progress-bar --upload-file "-" "https://$DOMAIN/$file_name"|tee /dev/null;
 	fi;
 	else file_name=$1;
@@ -180,8 +180,8 @@ alias diff-open="git diff --name-only | xargs $EDITOR"
 alias changed="git log --name-only"
 alias ducks='du -cks * | sort -rn | head -n 10'
 alias epoch='date +%s%3N'
-alias ai='aichat'
-alias a='aichat'
+alias git-resign="git rebase --exec 'git commit --amend --no-edit -n -S' -i" # Follow with what you rebase on, (eg: HEAD)
+alias git-resign-branch="git-resign HEAD"
 
 alias clear-scrollback="clear && printf '\e[3J'"
 
