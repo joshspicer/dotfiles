@@ -1,121 +1,55 @@
 
 #export PS1="%m: %B%~%b $ "
 
-## Oh my Zsh
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-export ZSH="$HOME/.oh-my-zsh"
-
 # Source shared alias
 . ~/.bash_aliases
 
 export GPG_TTY=$(tty)
 
-# Link my custom zsh theme first time dotfiles run
-THEME_DIR="$ZSH/custom/themes/"
-THEME_NAME="josh"
-THEME_FILE="$THEME_NAME.zsh-theme"
-if  [ -d $ZSH ] && [ ! -f $THEME_DIR/$THEME_FILE ];then
-    ln -sf ~/.dotfiles/$THEME_FILE $THEME_DIR/$THEME_FILE
-fi
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="$THEME_NAME"
+# -- prompt --
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# --- Enable substitution in prompts ---
+setopt prompt_subst
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# --- Config ---
+GIT_INFO_EXCLUDE_SUBSTRING="electron"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# --- Prompt Components ---
+short_pwd() {
+  local dir=${PWD/#$HOME/~}
+  local parts=(${(s:/:)dir})
+  local count=${#parts[@]}
+  if (( count <= 2 )); then
+    echo "$dir"
+  else
+    echo "…/${parts[-2]}/${parts[-1]}"
+  fi
+}
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+git_branch() {
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+  local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+  echo " $branch"
+}
 
-# Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="true"
+show_venv() {
+  [[ -n "$VIRTUAL_ENV" ]] && echo "(`basename \"$VIRTUAL_ENV\"`)"
+}
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# --- Helper to check if we're in an excluded path ---
+should_show_git_info() {
+  [[ "$PWD" != *"$GIT_INFO_EXCLUDE_SUBSTRING"* ]]
+}
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+# --- PROMPT and RPROMPT ---
+PROMPT='%F{green}$(show_venv)%f %F{blue}$(short_pwd)%f %# '
+# PROMPT='%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+RPROMPT='$(should_show_git_info && echo "%F{yellow}$(git_branch)%f")'
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git) # git-open
-
-if  [ -d "$ZSH" ] && [ -f "$ZSH/oh-my-zsh.sh" ]; then
-    source $ZSH/oh-my-zsh.sh
-fi
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+## -- end prompt --
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
@@ -123,6 +57,8 @@ fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=/opt/homebrew/bin:/Users/jospicer/.yarn/bin:/Users/jospicer/.config/yarn/global/node_modules/.bin:/Users/jospicer/.yarn/bin:/Users/jospicer/.config/yarn/global/node_modules/.bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Applications/iTerm.app/Contents/Resources/utilities
+
+. $HOME/.cargo/env
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

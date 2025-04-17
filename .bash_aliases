@@ -165,6 +165,7 @@ follow_redirects() {
 	curl $1 -s -L -I -o /dev/null -w '%{url_effective}'
 }
 
+alias ls='ls --color=auto'
 alias utc="date -u"
 alias cls="clear"
 alias gs="git status"
@@ -182,7 +183,7 @@ alias ducks='du -cks * | sort -rn | head -n 10'
 alias epoch='date +%s%3N'
 alias git-resign="git rebase --exec 'git commit --amend --no-edit -n -S' -i" # Follow with what you rebase on, (eg: HEAD)
 alias git-resign-branch="git-resign HEAD"
-
+alias gll='git log --show-signature'
 alias clear-scrollback="clear && printf '\e[3J'"
 
 # Codespaces
