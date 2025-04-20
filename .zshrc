@@ -1,4 +1,3 @@
-
 #export PS1="%m: %B%~%b $ "
 
 # Source shared alias
@@ -37,13 +36,20 @@ show_venv() {
   [[ -n "$VIRTUAL_ENV" ]] && echo "(`basename \"$VIRTUAL_ENV\"`)"
 }
 
+exit_code_prompt() {
+  local code=$?
+  if [[ $code -ne 0 ]]; then
+    echo "%F{red}[$code]%f"
+  fi
+}
+
 # --- Helper to check if we're in an excluded path ---
 should_show_git_info() {
   [[ "$PWD" != *"$GIT_INFO_EXCLUDE_SUBSTRING"* ]]
 }
 
 # --- PROMPT and RPROMPT ---
-PROMPT='%F{green}$(show_venv)%f %F{blue}$(short_pwd)%f %# '
+PROMPT='$(exit_code_prompt)%F{green}$(show_venv)%f %F{blue}$(short_pwd)%f %# '
 # PROMPT='%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 
 RPROMPT='$(should_show_git_info && echo "%F{yellow}$(git_branch)%f")'
